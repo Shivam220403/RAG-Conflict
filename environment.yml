@@ -1,0 +1,43 @@
+# =============================================================================
+# RAG-Conflict — Conda Environment
+# Create : conda env create -f environment.yml
+# Activate: conda activate rag-conflict
+# Update  : conda env update -f environment.yml --prune
+# =============================================================================
+
+name: rag-conflict
+
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Python version
+  - python=3.11
+
+  # Core Data & Science (via conda — more stable)
+  - numpy>=1.24.0
+  - pandas>=2.0.0
+  - scikit-learn>=1.3.0
+  - matplotlib>=3.7.0
+  - seaborn>=0.12.0
+  - tqdm>=4.65.0
+  - nltk>=3.8.0
+  - jupyter
+
+  # PyTorch (CPU — cloud will auto-detect GPU)
+  - pytorch>=2.1.0
+  - cpuonly
+
+  # pip-only packages (not on conda)
+  - pip
+  - pip:
+    - datasets>=2.12.0        # HuggingFace datasets
+    - transformers>=4.35.0    # HuggingFace models
+    - accelerate>=0.24.0      # Efficient model loading
+    - rouge-score>=0.1.2      # Lexical Self-Consistency metric
+    - python-dotenv>=1.0.0    # API key management
+    # GPU-only (install manually on Kaggle/Colab):
+    # - bitsandbytes>=0.41.0
+    # - vllm

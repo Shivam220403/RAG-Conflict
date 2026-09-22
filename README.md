@@ -2,7 +2,7 @@
 Evaluating reference-free uncertainty signals (token entropy, semantic entropy) in RAG systems under conflicting retrieved evidence. Dissertation project.
 
 ## Datasets
-### Natural Datasets — Entry Count & Role
+### Natural Datasets, Entry Count & Role
 
 | # | Dataset | HuggingFace ID | Entries (N) | Role / Category |
 |---|---------|---------------|-------------|-----------------|

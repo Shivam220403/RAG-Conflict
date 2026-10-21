@@ -1,34 +1,33 @@
 # =============================================================================
-# RAG-Conflict — Project Requirements
+# RAG-Conflict — Project Requirements (Modern 2026 Stack)
 # Install : pip install -r requirements.txt
-# Verified: 2026-09-23 on Python 3.11 (Anaconda base)
 # =============================================================================
 
 # --- HuggingFace Stack -------------------------------------------------------
-datasets==2.12.0          # Download & manage HuggingFace datasets
-transformers==4.32.1      # Load LLMs (Llama, Mistral, DeBERTa)
+datasets>=4.0.0           # Compatible with pandas 3.0 & numpy 2.x
+transformers>=5.0.0       # Compatible with accelerate 1.15.0
 accelerate==1.15.0        # Efficient model loading across CPU/GPU
 
 # --- PyTorch (CPU for local dev — GPU auto-detected on Kaggle/Colab) ---------
-torch==2.1.2
+torch>=2.6.0              # Required by accelerate 1.15.0 & numpy 2.x
 
 # --- Data & Science ----------------------------------------------------------
-numpy==1.26.4             # Token entropy math
+numpy>=2.2.0              # Required by modern scipy/sklearn/pandas 3.0 wheels
 pandas==3.0.6             # master_metrics.csv management
 scikit-learn==1.9.1       # AUROC, PR-AUC, Logistic Regression
 
 # --- NLP Metrics -------------------------------------------------------------
 rouge-score==0.1.2        # Lexical Self-Consistency (Signal 3)
-nltk==3.8.1               # Tokenization utilities
+nltk>=3.9.1               # Tokenization utilities (Fixes older regex/sec issues)
 
 # --- Visualisation -----------------------------------------------------------
 matplotlib==3.11.1        # ROC curves, PR curves
-seaborn==0.13.2           # Heatmaps, correlation plots
+seaborn>=0.13.2           # Heatmaps, correlation plots
 
 # --- Utilities ---------------------------------------------------------------
 tqdm==4.70.0              # Progress bars during inference
-python-dotenv==0.21.0     # Load API keys from .env file safely
+python-dotenv>=1.0.1      # Load API keys from .env file safely
 
 # --- GPU-only (DO NOT install locally — use on Kaggle/Colab only) ------------
-# bitsandbytes>=0.41.0    # 4-bit NF4 quantization
+# bitsandbytes>=0.45.0    # 4-bit NF4 quantization
 # vllm                    # High-throughput batched sampling (Linux only)

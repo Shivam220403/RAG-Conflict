@@ -66,8 +66,15 @@ print("\n" + "="*60)
 print("LOADING: LLMBar")
 print("="*60)
 
-# This dataset has multiple subsets — 'Adversarial' is the one we need
-llmbar = load_dataset("princeton-nlp/LLMBar", "Adversarial")
+# This dataset has multiple subsets — 'Adversarial' is loaded directly via raw JSON files
+# to remain compatible with datasets>=4.0.0 (where custom .py scripts are no longer supported)
+adversarial_files = {
+    "GPTInst":  "https://raw.githubusercontent.com/princeton-nlp/LLMBar/main/Dataset/LLMBar/Adversarial/GPTInst/dataset.json",
+    "GPTOut":   "https://raw.githubusercontent.com/princeton-nlp/LLMBar/main/Dataset/LLMBar/Adversarial/GPTOut/dataset.json",
+    "Manual":   "https://raw.githubusercontent.com/princeton-nlp/LLMBar/main/Dataset/LLMBar/Adversarial/Manual/dataset.json",
+    "Neighbor": "https://raw.githubusercontent.com/princeton-nlp/LLMBar/main/Dataset/LLMBar/Adversarial/Neighbor/dataset.json",
+}
+llmbar = load_dataset("json", data_files=adversarial_files)
 
 print("\n[Structure]")
 print(llmbar)
@@ -92,7 +99,7 @@ print("\n" + "="*60)
 print("LOADING: RAGTruth")
 print("="*60)
 
-ragtruth = load_dataset("wandb/RAGTruth")   # community mirror
+ragtruth = load_dataset("wandb/RAGTruth-processed")   # community mirror
 
 print("\n[Structure]")
 print(ragtruth)
